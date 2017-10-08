@@ -40,18 +40,25 @@ export class AddComponent implements OnInit {
     this.dataFeed.data = moment().format('D/M/Y, H:mm:ss ');
     this.https = http;
 
+    this.dataFeed.id = localStorage.length + 1;
    }
 
 
 
   onSubmit(form){
-    //console.log(form);
-    //console.log(JSON.stringify(form.value));
-
-    this.dataFeed.id = this.feeds.getCount();
     this.length = localStorage.length + 1;
+    this.dataFeed.title   = form.value.title;
+    this.dataFeed.url     = form.value.url;
+    this.dataFeed.info    = form.value.info;
+    this.dataFeed.favorite  = form.value.favorite;
+    this.dataFeed.read = form.value.read;
+    this.dataFeed.data = moment().format('D/M/Y, H:mm:ss ');
+
+    localStorage.setItem(this.length, JSON.stringify(this.dataFeed));
+
+
     this.router.navigate(['/']);
-    localStorage.setItem(this.length, JSON.stringify(form.value));
+
     /*
     this.https.post('https://httpbin.org/post', JSON.stringify(form.value))
     .map(res => res)

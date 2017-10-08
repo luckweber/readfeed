@@ -1,3 +1,6 @@
+.feeds li{
+  list-style: none;
+}
 .mail-box {
     border-collapse: collapse;
     border-spacing: 0;
@@ -363,4 +366,8 @@ ul {
     padding: 0px;
     margin: 0px;
 }
- 
+
+
+.fa-starfull{
+  color: red !important;
+}

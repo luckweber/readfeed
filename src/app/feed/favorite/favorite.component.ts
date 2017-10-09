@@ -1,17 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import  { FeedService } from '../feed/feed.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
-
-import * as moment from 'moment';
-import 'moment/locale/pt-br';
+import { FeedService } from '../feed.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-favorite',
+  templateUrl: './favorite.component.html',
+  styleUrls: ['./favorite.component.css']
 })
-export class HomeComponent implements OnInit {
+export class FavoriteComponent implements OnInit {
 
   f:any = [];
   feeds: FeedService;
@@ -22,13 +19,11 @@ export class HomeComponent implements OnInit {
   filter:string;
 
   constructor(feedsList: FeedService, private router: Router) {
+    this.favoriteCount = feedsList.getFeedsFavoriteCount();
     this.feeds = feedsList;
-    this.favoriteCount = this.feeds.getFeedsFavoriteCount();
     this.routers = this.router;
-    this.feedCount = this.feeds.getFeedNew();
+    this.feedCount = feedsList.getFeedNew();
   }
-
-
 
 
   getFilter(){
@@ -50,11 +45,11 @@ export class HomeComponent implements OnInit {
 
   setFavorite(id){
     this.feeds.setFavorite(id);
-    this.f = this.feeds.getFeeds();
+    this.f = this.feeds.getFeedsFavorite();
   }
 
   ngOnInit() {
-    this.f = this.feeds.getFeeds();
+    this.f = this.feeds.getFeedsFavorite();
   }
 
 }

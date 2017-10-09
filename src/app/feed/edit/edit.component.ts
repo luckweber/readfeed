@@ -33,6 +33,9 @@ export class EditComponent implements OnInit {
     data     : null,
 
   }
+
+  favoriteCount;
+
   constructor(private route:ActivatedRoute, private http: Http,service: FeedService, private router: Router) {
     this.services = service;
     this.https = http;
@@ -46,6 +49,10 @@ export class EditComponent implements OnInit {
     this.dataFeed.read = feedss.read;
     this.dataFeed.id = feedss.id;
     this.dataFeed.data = feedss.data;
+
+    this.favoriteCount = service.getFeedsFavoriteCount();
+    this.feedCount = service.getFeedNew();
+
 
     //this.services.editFeed(this.id);
    }

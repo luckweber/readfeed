@@ -20,7 +20,10 @@ export class AddComponent implements OnInit {
   something = null;
   length = null;
 
+  service;
+  routers;
   data;
+
 
   dataFeed: any = {
     title    : null,
@@ -32,10 +35,15 @@ export class AddComponent implements OnInit {
     data     : null
   }
 
-
+  favoriteCount;
 
   constructor(feedsList: FeedService, private http: Http,  private router: Router) {
-    //http: Http = new Http();
+    this.favoriteCount = feedsList.getFeedsFavoriteCount();
+    this.feedCount = feedsList.getFeedNew();
+
+    this.service = feedsList;
+    this.routers = router;
+
     this.feeds = feedsList;
     this.dataFeed.data = moment().format('D/M/Y, H:mm:ss ');
     this.https = http;
@@ -54,10 +62,12 @@ export class AddComponent implements OnInit {
     this.dataFeed.read = form.value.read;
     this.dataFeed.data = moment().format('D/M/Y, H:mm:ss ');
 
-    localStorage.setItem(this.length, JSON.stringify(this.dataFeed));
+    //localStorage.setItem(this.length, JSON.stringify(this.dataFeed));
 
 
-    this.router.navigate(['/']);
+    this.service.addFeed(this.dataFeed, this.routers);
+
+    //this.router.navigate(['/']);
 
     /*
     this.https.post('https://httpbin.org/post', JSON.stringify(form.value))

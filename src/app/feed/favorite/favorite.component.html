@@ -72,18 +72,16 @@
                           </div><!-- /.modal -->
                       </div>
                       <ul class="inbox-nav inbox-divider">
-                        <li class="active">
+                        <li routerLinkActive="active">
                             <a routerLink=""><i class="fa fa-inbox"></i> Inbox <span class="badge">{{ feedCount }}</span></a>
-
                         </li>
-                        <li>
-                            <a routerLink="add"><i class="fa fa-plus"></i> Add Feed</a>
+                        <li routerLinkActive="active">
+                            <a routerLink="../add"><i class="fa fa-plus"></i> Add Feed</a>
                         </li>
-                        <li>
-                            <a routerLink="favorite"><i class="fa fa-bookmark"></i> Favorite Feed <span class="badge">{{ favoriteCount }}</span></a>
+                        <li routerLinkActive="active">
+                            <a routerLink="../favorite"><i class="fa fa-bookmark"></i> Favorite Feed <span class="badge">{{ favoriteCount }}</span></a>
                         </li>
                       </ul>
-
                       <div class="inbox-body text-center">
                           <div class="btn-group">
                               <a class="btn mini btn-primary" href="javascript:;">
@@ -105,56 +103,87 @@
                   </aside>
                   <aside class="lg-side">
                       <div class="inbox-head">
-                          <h3>View</h3>
-                          <form action="#" class="pull-right position">
+                          <h3>favorites</h3>
+                          <div action="#" class="pull-right position">
                               <div class="input-append">
+                                  <input type="text" class="sr-input" id="filter" (click)="getFilter()" name="filter" [(ngModel)]="filter" placeholder="Search Feeds">
+                                  <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
                               </div>
-                          </form>
+                          </div>
                       </div>
                       <div class="inbox-body">
                          <div class="mail-option">
-
-
-                             <div class="btn-group">
-                                 <a routerLink="" data-original-title="Refresh" data-placement="top" data-toggle="dropdown"  class="btn mini tooltips">
-                                     <i class=" fa fa-angle-left"> Back</i>
-                                 </a>
+                             <div class="chk-all">
+                                 <input type="checkbox" class="mail-checkbox mail-group-checkbox">
+                                 <div class="btn-group">
+                                     <a data-toggle="dropdown" href="#" class="btn mini all" aria-expanded="false">
+                                         All
+                                         <i class="fa fa-angle-down "></i>
+                                     </a>
+                                     <ul class="dropdown-menu">
+                                         <li><a href="#"> None</a></li>
+                                         <li><a href="#"> Read</a></li>
+                                         <li><a href="#"> Unread</a></li>
+                                     </ul>
+                                 </div>
                              </div>
 
+                             <div class="btn-group">
+                                 <a data-original-title="Refresh" data-placement="top" data-toggle="dropdown" href="#" class="btn mini tooltips">
+                                     <i class=" fa fa-refresh"></i>
+                                 </a>
+                             </div>
+                             <div class="btn-group hidden-phone">
+                                 <a data-toggle="dropdown" href="#" class="btn mini blue" aria-expanded="false">
+                                     More
+                                     <i class="fa fa-angle-down "></i>
+                                 </a>
+                                 <ul class="dropdown-menu">
+                                     <li><a href="#"><i class="fa fa-pencil"></i> Mark as Read</a></li>
+                                     <li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
+                                     <li class="divider"></li>
+                                     <li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
+                                 </ul>
+                             </div>
+                             <div class="btn-group">
+                                 <a data-toggle="dropdown" href="#" class="btn mini blue">
+                                     Move to
+                                     <i class="fa fa-angle-down "></i>
+                                 </a>
+                                 <ul class="dropdown-menu">
+                                     <li><a href="#"><i class="fa fa-pencil"></i> Mark as Read</a></li>
+                                     <li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
+                                     <li class="divider"></li>
+                                     <li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
+                                 </ul>
+                             </div>
 
+                             <ul class="unstyled inbox-pagination">
+                                 <li><span>1-50 of 234</span></li>
+                                 <li>
+                                     <a class="np-btn" href="#"><i class="fa fa-angle-left  pagination-left"></i></a>
+                                 </li>
+                                 <li>
+                                     <a class="np-btn" href="#"><i class="fa fa-angle-right pagination-right"></i></a>
+                                 </li>
+                             </ul>
                          </div>
-                         <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-                          <div class="alert alert-info" *ngIf="f.submitted">Feed Edited!</div>
-
                           <table class="table table-inbox table-hover">
                             <tbody>
-
-                              <tr>
-                                <td>
-                                  <h1>{{ dataFeed.title }}</h1><br><h5>URL: {{ dataFeed.url }}</h5>
+                              <tr [class.unread]="f.read == false" *ngFor="let f of getFilter()">
+                                <td class="inbox-small-cells">
+                                    <a [routerLink]="['../edit',f.id]"><i class="fa fa-pencil-square-o"></i></a>
                                 </td>
-                                <td>
-                                </td>
+                                <td class="inbox-small-cells"><i (click)="setFavorite(f.id)" class="fa fa-star"
+                                  [class.fa-starfull]="f.favorite == true"
+                                  ></i></td>
+                                <td class="view-message  dont-show">{{ f.title }} <span *ngIf="f.read == false" class="label label-danger pull-right">New</span></td>
+                                <td class="view-message "><a [routerLink]="['../view', f.id]">{{ f.url }}</a></td>
+                                <td class="view-message  inbox-small-cells"><a [routerLink]="['../remove',f.id]"><i class="fa fa-remove"></i></a></td>
+                                <td class="view-message  text-right">{{ f.data }}</td>
                               </tr>
-
-                              <tr>
-                                <td>
-                                  <p>{{ dataFeed.info }}</p>
-                                </td>
-                                <td>
-                                </td>
-                              </tr>
-
                           </tbody>
                           </table>
-
-                        </form>
-                        <br>
-                        <br>
-                        <br>
-                        <pre>
-                            <br>Form value:<br> {{dataFeed | json}}
-                        </pre>
                       </div>
                   </aside>
               </div>

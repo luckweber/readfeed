@@ -31,7 +31,7 @@ export class ViewComponent implements OnInit {
     data     :null
 
   }
-
+  favoriteCount;
 
   constructor(private route:ActivatedRoute, private http: Http,service: FeedService, private router: Router) {
     this.services = service;
@@ -46,6 +46,9 @@ export class ViewComponent implements OnInit {
     this.dataFeed.read = feedss.rea;
     this.dataFeed.id = feedss.id;
     this.dataFeed.data = feedss.data;
+    this.favoriteCount = service.getFeedsFavoriteCount();
+    this.feedCount = service.getFeedNew();
+
 
     //this.services.editFeed(this.id);
    }

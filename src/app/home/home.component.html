@@ -73,11 +73,14 @@
                       </div>
                       <ul class="inbox-nav inbox-divider">
                           <li class="active">
-                              <a routerLink=""><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">{{ feedCount }}</span></a>
+                              <a routerLink=""><i class="fa fa-inbox"></i> Inbox <span class="badge">{{ feedCount }}</span></a>
 
                           </li>
                           <li>
                               <a routerLink="add"><i class="fa fa-plus"></i> Add Feed</a>
+                          </li>
+                          <li>
+                              <a routerLink="favorite"><i class="fa fa-bookmark"></i> Favorite Feed <span class="badge">{{ favoriteCount }}</span></a>
                           </li>
                       </ul>
                       <div class="inbox-body text-center">

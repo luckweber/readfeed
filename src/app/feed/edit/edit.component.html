@@ -72,13 +72,15 @@
                           </div><!-- /.modal -->
                       </div>
                       <ul class="inbox-nav inbox-divider">
-                          <li routerLinkActive="active">
-                              <a routerLink=""><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">2</span></a>
-
-                          </li>
-                          <li routerLinkActive="active">
-                            <a routerLink="../../add"><i class="fa fa-plus"></i> Add Feed</a>
-                          </li>
+                        <li routerLinkActive="active">
+                            <a routerLink=""><i class="fa fa-inbox"></i> Inbox <span class="badge">{{ feedCount }}</span></a>
+                        </li>
+                        <li routerLinkActive="active">
+                            <a routerLink="../add"><i class="fa fa-plus"></i> Add Feed</a>
+                        </li>
+                        <li routerLinkActive="active">
+                            <a routerLink="../favorite"><i class="fa fa-bookmark"></i> Favorite Feed <span class="badge">{{ favoriteCount }}</span></a>
+                        </li>
                       </ul>
 
                       <div class="inbox-body text-center">

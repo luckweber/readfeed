@@ -14,6 +14,7 @@ import { RemoveComponent } from './feed/remove/remove.component';
 import { EditComponent } from './feed/edit/edit.component';
 import { FilterSearchPipe } from './feed/filter-search.pipe';
 import { ViewComponent } from './feed/view/view.component';
+import { FavoriteComponent } from './feed/favorite/favorite.component';
 
 
 
@@ -27,7 +28,8 @@ import { ViewComponent } from './feed/view/view.component';
     EditComponent,
     EditComponent,
     FilterSearchPipe,
-    ViewComponent
+    ViewComponent,
+    FavoriteComponent
   ],
   imports: [
     BrowserModule,

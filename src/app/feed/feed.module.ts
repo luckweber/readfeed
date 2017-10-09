@@ -9,6 +9,7 @@ import { RemoveComponent } from './remove/remove.component';
 import { EditComponent } from './edit/edit.component';
 import { FilterSearchPipe } from './filter-search.pipe';
 import { ViewComponent } from './view/view.component';
+import { FavoriteComponent } from './favorite/favorite.component';
 
 @NgModule({
   imports: [
@@ -22,14 +23,16 @@ import { ViewComponent } from './view/view.component';
     RemoveComponent,
     EditComponent,
     FilterSearchPipe,
-    ViewComponent
+    ViewComponent,
+    FavoriteComponent
   ],
   exports:[
     AddComponent,
     FeedService,
     RemoveComponent,
     EditComponent,
-    ViewComponent
+    ViewComponent,
+    FavoriteComponent
 
   ]
 })

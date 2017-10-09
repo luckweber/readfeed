@@ -32,6 +32,7 @@ export class FeedService{
     }else{
       feed.favorite = null;
     }
+
     localStorage.setItem(id, JSON.stringify(feed));
 
   }
@@ -43,6 +44,39 @@ export class FeedService{
   delete(id, router){
       this.router = router;
       localStorage.removeItem(id);
+      this.router.navigate(['/']);
+  }
+
+  addFeed(feed, router){
+      var id = 0;
+      this.router = router;
+
+    var orderArray  = [];
+
+    if(localStorage.length > 0 ){
+
+        for(let result in localStorage){
+            orderArray.push(result);
+        }
+
+
+        var orderArrayFinal = orderArray.sort();
+
+
+        for(let  i = orderArrayFinal.length-1; i < orderArrayFinal.length; i++){
+            id = orderArrayFinal[i];
+            id++;
+        }
+
+
+      }else{
+        id = 1;
+      }
+
+
+      feed.id = id;
+
+      localStorage.setItem(String(id), JSON.stringify(feed));
       this.router.navigate(['/']);
   }
 
@@ -66,16 +100,35 @@ export class FeedService{
     for(let result in localStorage){
         list.push(JSON.parse(localStorage.getItem(String(result))));
     }
-
-
-    /*
-      for(  let i = 0;  i  < localStorage.length; i++ ){
-          var  getId = JSON.parse(localStorage.getItem(String(i+1)));
-          var id = getId.id;
-          this.feedList[i] = JSON.parse(localStorage.getItem(String(i+1)));
-      }
-      */
     return list;
+  }
+
+  getFeedsFavorite(){
+    let  list = [];
+    for(let result in localStorage){
+
+        var  feeds = JSON.parse(localStorage.getItem(String(result)));
+
+        if(feeds.favorite == true){
+            list.push(JSON.parse(localStorage.getItem(String(result))));
+        }
+
+    }
+    return list;
+  }
+
+  getFeedsFavoriteCount(){
+    let  list = [];
+    for(let result in localStorage){
+
+        var  feeds = JSON.parse(localStorage.getItem(String(result)));
+
+        if(feeds.favorite == true){
+            list.push(JSON.parse(localStorage.getItem(String(result))));
+        }
+
+    }
+    return list.length;
   }
 
 }

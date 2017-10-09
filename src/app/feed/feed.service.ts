@@ -6,7 +6,33 @@ import { Router } from '@angular/router';
 export class FeedService{
 
   feedList = new Array ();
-  router:Router;
+  routers:Router;
+
+  constructor(private router : Router){
+    this.routers = router;
+
+  }
+
+  validLogin(form){
+    var forms = JSON.stringify(form.value);
+    sessionStorage.setItem('user', JSON.stringify(forms));
+    this.routers.navigate(['/']);
+  }
+
+  LogOff(){
+
+
+    this.routers.navigate(['/']);
+    }
+
+  login(){
+    //this.router = router;
+
+    if(sessionStorage.getItem('user') == "" || sessionStorage.getItem('user') ==  undefined){
+        this.routers.navigate(['/login']);
+
+    }
+  }
 
   getCount(){
     var  countFeeds = [];

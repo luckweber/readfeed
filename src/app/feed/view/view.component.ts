@@ -48,7 +48,7 @@ export class ViewComponent implements OnInit {
     this.dataFeed.data = feedss.data;
     this.favoriteCount = service.getFeedsFavoriteCount();
     this.feedCount = service.getFeedNew();
-
+    this.services.login();
 
     //this.services.editFeed(this.id);
    }

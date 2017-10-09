@@ -10,6 +10,8 @@ import { EditComponent } from './edit/edit.component';
 import { FilterSearchPipe } from './filter-search.pipe';
 import { ViewComponent } from './view/view.component';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { LoginComponent } from '../login/login.component';
+
 
 @NgModule({
   imports: [
@@ -24,7 +26,8 @@ import { FavoriteComponent } from './favorite/favorite.component';
     EditComponent,
     FilterSearchPipe,
     ViewComponent,
-    FavoriteComponent
+    FavoriteComponent,
+    LoginComponent
   ],
   exports:[
     AddComponent,
@@ -32,7 +35,8 @@ import { FavoriteComponent } from './favorite/favorite.component';
     RemoveComponent,
     EditComponent,
     ViewComponent,
-    FavoriteComponent
+    FavoriteComponent,
+    LoginComponent
 
   ]
 })

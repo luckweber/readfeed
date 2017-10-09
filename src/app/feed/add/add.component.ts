@@ -49,6 +49,9 @@ export class AddComponent implements OnInit {
     this.https = http;
 
     this.dataFeed.id = localStorage.length + 1;
+
+    this.service.login();
+
    }
 
 
@@ -66,6 +69,7 @@ export class AddComponent implements OnInit {
 
 
     this.service.addFeed(this.dataFeed, this.routers);
+
 
     //this.router.navigate(['/']);
 

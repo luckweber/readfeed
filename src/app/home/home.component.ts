@@ -26,6 +26,9 @@ export class HomeComponent implements OnInit {
     this.favoriteCount = this.feeds.getFeedsFavoriteCount();
     this.routers = this.router;
     this.feedCount = this.feeds.getFeedNew();
+
+
+    this.feeds.login();
   }
 
 
@@ -55,6 +58,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.f = this.feeds.getFeeds();
+
+
   }
 
 }

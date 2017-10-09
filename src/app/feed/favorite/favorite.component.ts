@@ -23,6 +23,7 @@ export class FavoriteComponent implements OnInit {
     this.feeds = feedsList;
     this.routers = this.router;
     this.feedCount = feedsList.getFeedNew();
+    feedsList.login();
   }
 
 

@@ -52,7 +52,7 @@ export class EditComponent implements OnInit {
 
     this.favoriteCount = service.getFeedsFavoriteCount();
     this.feedCount = service.getFeedNew();
-
+    service.login();
 
     //this.services.editFeed(this.id);
    }

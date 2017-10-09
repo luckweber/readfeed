@@ -8,6 +8,8 @@ import { RemoveComponent } from './feed/remove/remove.component';
 import { EditComponent } from './feed/edit/edit.component';
 import { ViewComponent } from './feed/view/view.component';
 import { FavoriteComponent } from './feed/favorite/favorite.component';
+import { LoginComponent } from './login/login.component';
+import { LogoffComponent } from './logoff/logoff.component';
 
 
 
@@ -19,6 +21,8 @@ const APP_ROUTES: Routes = [
   { path:'view/:id', component:ViewComponent },
   { path:'edit/:id', component:EditComponent },
   { path:'favorite', component:FavoriteComponent },
+  { path:'login', component:LoginComponent },
+  { path:'logoff', component:LogoffComponent },
   { path: 'auth', redirectTo: '', pathMatch: 'full'}
 ];
 

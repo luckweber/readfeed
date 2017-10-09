@@ -15,6 +15,8 @@ import { EditComponent } from './feed/edit/edit.component';
 import { FilterSearchPipe } from './feed/filter-search.pipe';
 import { ViewComponent } from './feed/view/view.component';
 import { FavoriteComponent } from './feed/favorite/favorite.component';
+import { LoginComponent } from './login/login.component';
+import { LogoffComponent } from './logoff/logoff.component';
 
 
 
@@ -29,7 +31,9 @@ import { FavoriteComponent } from './feed/favorite/favorite.component';
     EditComponent,
     FilterSearchPipe,
     ViewComponent,
-    FavoriteComponent
+    FavoriteComponent,
+    LoginComponent,
+    LogoffComponent
   ],
   imports: [
     BrowserModule,

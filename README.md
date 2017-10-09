@@ -6,6 +6,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Projeto  feito para teste  de conhecimentos das ferramentas Angular,  CSS, HTML.
 
+## How   Install
+
+1. Dentro  da pasta principal, use o como "mpn i" para instalar todo módulos  necessários.
+
+2. Usei  o  comando "ng serve"  para iniciar o angular.
 
 ## Development server
 
